@@ -155,10 +155,21 @@ export function Paywall({ price, exportPrice, defaultPlan = "subscription", onSu
           </div>
 
           {state === "pending" ? (
-            <div className="mt-5 border border-ink bg-ink p-5 text-center text-paper">
+            <div className="mt-5 border border-ink bg-ink p-5 text-paper">
               <Loader2 className="mx-auto h-6 w-6 animate-spin text-blue-light" />
-              <p className="mt-3 text-sm font-semibold">Confirmez le paiement sur votre téléphone…</p>
-              <p className="mt-1 text-xs text-paper/60">Validez la demande Mobile Money envoyée au {phone}</p>
+              <p className="mt-3 text-sm font-semibold">{instruction.title}</p>
+              <p className="mt-1 text-xs text-paper/60">
+                Montant : {amount.toLocaleString("fr-FR")} FCFA · au {phone}
+              </p>
+              <ol className="mx-auto mt-4 max-w-xs space-y-2 text-left text-sm text-paper/85">
+                {instruction.steps.map((s, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="font-mono text-blue-light">{String(i + 1).padStart(2, "0")}</span>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ol>
+              <p className="mt-4 text-xs text-paper/50">Statut vérifié automatiquement…</p>
             </div>
           ) : state === "success" ? (
             <div className="mt-5 border border-ink p-5 text-center">
