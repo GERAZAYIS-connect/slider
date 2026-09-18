@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #faf9f6;
+  color: #0a0a0a;
+  font-family: "Poppins", "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+
+.app-shell {
+  height: 100vh;
+  height: 100dvh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #0a0a0a;
+  border-radius: 0;
+  border: 2px solid #faf9f6;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1e40af;
+}
+
+.slide-canvas {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  transform-origin: top left;
+  flex-shrink: 0;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 text-sm font-semibold transition-colors select-none;
+    border-radius: 6px;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-paper hover:bg-blue;
+  }
+
+  .btn-secondary {
+    @apply border border-ink bg-paper text-ink hover:border-blue hover:text-blue;
+  }
+
+  .btn-ghost {
+    @apply text-ink hover:bg-ink/5;
+  }
+
+  .input {
+    @apply w-full border border-ink bg-paper px-3 py-2 text-sm outline-none transition focus:border-blue focus:ring-2 focus:ring-blue/20;
+    border-radius: 0;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[11px] font-medium uppercase text-ink;
+    letter-spacing: 0.18em;
+  }
+
+  .kicker {
+    @apply inline-flex items-center gap-2 text-[11px] font-medium uppercase;
+    letter-spacing: 0.18em;
+  }
+  .kicker::before {
+    content: "";
+    @apply h-2 w-2 shrink-0 bg-blue;
+  }
+
+  .kbd {
+    @apply inline-flex h-5 min-w-[20px] items-center justify-center border border-ink bg-paper px-1 text-[11px] font-medium text-ink;
+    border-radius: 0;
+  }
+}
